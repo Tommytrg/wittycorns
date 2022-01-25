@@ -244,7 +244,7 @@ export const PlayerVTO = Type.Object({
   ranch: RanchVTO,
   points: Type.Integer(),
   medals: Type.Array(Type.Optional(Type.String())),
-  selectedBufficorn: Type.Integer()
+  selectedBufficorn: Type.Integer(),
 })
 export type PlayerVTO = Static<typeof PlayerVTO>
 

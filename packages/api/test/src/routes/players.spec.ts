@@ -137,7 +137,6 @@ describe('player.ts', () => {
 
   describe('POST /player/selected-bufficorn/:index', () => {
     it('Should not update selected bufficorn - no authorization header', async () => {
-
       await serverInject(
         {
           method: 'POST',
@@ -149,9 +148,9 @@ describe('player.ts', () => {
           )
         }
       )
-    }) 
+    })
 
- it('should NOT update selected bufficorn - invalid jwt token', async () => {
+    it('should NOT update selected bufficorn - invalid jwt token', async () => {
       await serverInject(
         {
           method: 'POST',
@@ -168,7 +167,7 @@ describe('player.ts', () => {
 
     it('should not update selected bufficorn - index greater than 3', async () => {
       const token = await authenticatePlayer(initialPlayers[0].key)
-      
+
       await serverInject(
         {
           method: 'POST',
@@ -187,7 +186,7 @@ describe('player.ts', () => {
 
     it('should not update selected bufficorn - index smaller than 0', async () => {
       const token = await authenticatePlayer(initialPlayers[0].key)
-      
+
       await serverInject(
         {
           method: 'POST',
@@ -203,10 +202,10 @@ describe('player.ts', () => {
         }
       )
     })
-    
+
     it('should not update selected bufficorn - index should be an integer', async () => {
       const token = await authenticatePlayer(initialPlayers[0].key)
-      
+
       await serverInject(
         {
           method: 'POST',
@@ -225,7 +224,7 @@ describe('player.ts', () => {
 
     it('should not update selected bufficorn - index should be an integer', async () => {
       const token = await authenticatePlayer(initialPlayers[0].key)
-      
+
       await serverInject(
         {
           method: 'POST',
@@ -256,16 +255,14 @@ describe('player.ts', () => {
         },
         (err, response) => {
           const {
-            player: {
-              selectedBufficorn,
-            },
+            player: { selectedBufficorn },
           } = response.json()
           initialSelectedBufficorn = selectedBufficorn
         }
       )
 
       const selectedBufficorn = initialSelectedBufficorn === 0 ? 1 : 0
-      
+
       await serverInject(
         {
           method: 'POST',
@@ -279,10 +276,8 @@ describe('player.ts', () => {
           expect(response.json().statusCode).toBe(200)
         }
       )
-
     })
   })
-
 
   // test('should get EGG #1 - get after incubation', async (t) => {
   //   const token = await authenticatePlayer(initialPlayers[0].key)

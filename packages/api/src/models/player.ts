@@ -46,7 +46,7 @@ export class PlayerModel {
     const points: number = 0
 
     const selectedBufficorn = index % 4
-    
+
     return new Player({
       key,
       username,
